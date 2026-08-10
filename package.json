@@ -1,0 +1,31 @@
+{
+  "name": "mba-token",
+  "version": "1.0.0",
+  "description": "MBA Token - Digital asset for travel and trade payments across Africa",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network sepolia"
+  },
+  "keywords": [
+    "ethereum",
+    "token",
+    "erc20",
+    "smart-contract",
+    "blockchain",
+    "travel",
+    "africa"
+  ],
+  "author": "k6mido-ux",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "@openzeppelin/contracts": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
