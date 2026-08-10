@@ -1,0 +1,32 @@
+{
+  "deployments": {
+    "sepolia": {
+      "contractAddress": "Pending",
+      "deploymentDate": "Pending",
+      "explorerUrl": "https://sepolia.etherscan.io"
+    },
+    "mainnet": {
+      "contractAddress": "Pending",
+      "deploymentDate": "Pending",
+      "explorerUrl": "https://etherscan.io"
+    },
+    "polygon": {
+      "contractAddress": "Pending",
+      "deploymentDate": "Pending",
+      "explorerUrl": "https://polygonscan.com"
+    }
+  },
+  "tokenInfo": {
+    "name": "MBA Token",
+    "symbol": "MBA",
+    "decimals": 18,
+    "initialSupply": 1000000
+  },
+  "contracts": {
+    "MBAToken": {
+      "description": "Main ERC20 token contract",
+      "version": "1.0.0",
+      "license": "MIT"
+    }
+  }
+}
