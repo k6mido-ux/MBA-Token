@@ -2,7 +2,7 @@
 
 **Digital Asset for Global Travel and Trade Payments**
 
-MBA Token is a comprehensive ERC20-compliant smart contract deployed by Al Barqawi Travel Agency to facilitate secure and efficient payments in travel, trade, and exhibition services across Africa and internationally.
+MBA Token is a comprehensive ERC20-compliant smart contract deployed by Al Barqawi Travel Agency to facilitate secure and efficient payments in travel, trade, and exhibition services across Africa [...]
 
 ---
 
@@ -106,6 +106,167 @@ npm run deploy
 ```
 
 ⚠️ **Important**: Always test thoroughly on testnet before mainnet deployment!
+
+---
+
+## 📋 متطلبات النشر (Deployment Requirements)
+
+قبل نشر عقد MBA Token على أي شبكة، تأكد من توفر المتطلبات التالية:
+
+### 1️⃣ **متطلبات البيئة (Environment Requirements)**
+- ✅ Node.js v14 أو أعلى
+- ✅ npm أو yarn
+- ✅ Git
+- ✅ محفظة Ethereum مع رصيد من ETH
+- ✅ مفتاح خاص آمن (Private Key) - لا تشاركه مع أحد
+- ✅ Etherscan API Key (اختياري - للتحقق من العقد)
+
+### 2️⃣ **متطلبات الشبكة (Network Requirements)**
+
+#### **لنشر على Sepolia Testnet:**
+- ETH من Sepolia Testnet (يمكن الحصول عليها من [Sepolia Faucet](https://sepoliafaucet.com/))
+- RPC URL لـ Sepolia
+- إضافة Sepolia إلى محفظتك
+
+#### **لنشر على Ethereum Mainnet:**
+- ETH فعلي (حقيقي) - تكاليف الغاز مرتفعة
+- RPC URL آمن (من Infura أو Alchemy)
+- عنوان محفظة مثبت (Verified Wallet)
+
+#### **لنشر على Polygon:**
+- MATIC من Polygon mainnet
+- RPC URL: `https://polygon-rpc.com/`
+- Gas سعر منخفض
+
+#### **لنشر على Binance Smart Chain:**
+- BNB للرسوم
+- RPC URL: `https://bsc-dataseed.binance.org/`
+
+### 3️⃣ **متطلبات الأمان (Security Requirements)**
+
+```
+✅ تشفير المفتاح الخاص في .env
+✅ عدم رفع .env على GitHub
+✅ استخدام hardware wallet (اختياري - موصى به للمبالغ الكبيرة)
+✅ التحقق من عنوان العقد قبل النشر
+✅ اختبار كامل على testnet أولاً
+✅ التحقق من وظائف العقد بعد النشر
+```
+
+### 4️⃣ **متطلبات ملف .env**
+
+```env
+# Ethereum Mainnet
+ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY
+ETHEREUM_PRIVATE_KEY=your_private_key_here
+
+# Sepolia Testnet
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+SEPOLIA_PRIVATE_KEY=your_private_key_here
+
+# Polygon
+POLYGON_RPC_URL=https://polygon-rpc.com/
+POLYGON_PRIVATE_KEY=your_private_key_here
+
+# Binance Smart Chain
+BSC_RPC_URL=https://bsc-dataseed.binance.org/
+BSC_PRIVATE_KEY=your_private_key_here
+
+# Etherscan (اختياري - للتحقق)
+ETHERSCAN_API_KEY=your_etherscan_api_key
+```
+
+### 5️⃣ **متطلبات التحقق (Verification Requirements)**
+
+لتحقق من العقد على Etherscan:
+
+```bash
+npx hardhat verify --network sepolia CONTRACT_ADDRESS "Constructor arguments if any"
+```
+
+---
+
+## 📈 Roadmap - خارطة الطريق
+
+مراحل النشر والتطوير المخطط لها:
+
+### المرحلة 1️⃣: **الاختبار والنشر الأولي**
+- [x] بناء العقد الذكي
+- [x] اختبار محلي (Hardhat)
+- [ ] **نشر على Sepolia Testnet** ⏳
+- [ ] التحقق من العقد على Sepolia
+- [ ] اختبار جميع الوظائف على Testnet
+
+### المرحلة 2️⃣: **النشر على Mainnet**
+- [ ] **نشر على Ethereum Mainnet** 🎯
+  - عنوان العقد: قريباً
+  - رابط Etherscan: قريباً
+- [ ] التحقق من العقد على Etherscan
+- [ ] إطلاق موقع البيانات الرسمي
+
+### المرحلة 3️⃣: **توسيع متعدد السلاسل**
+- [ ] **نشر على Polygon** 
+  - تقليل رسوم المعاملات
+  - سرعة معاملات أعلى
+- [ ] **نشر على Binance Smart Chain**
+  - الوصول إلى مستخدمي BSC
+  - تكاليف غاز منخفضة
+
+### المرحلة 4️⃣: **تطبيقات الويب والجوال**
+- [ ] **تطوير محفظة جوال (Mobile Wallet)**
+  - تطبيق iOS
+  - تطبيق Android
+  - إدارة الرصيد والتحويلات
+- [ ] **إنشاء لوحة تحكم ويب (Web Dashboard)**
+  - عرض الرصيد
+  - تحويل الرموز
+  - سجل المعاملات
+  - إدارة الأذونات
+
+### المرحلة 5️⃣: **التكاملات والخدمات**
+- [ ] **التكامل مع بوابات الدفع**
+  - Stripe integration
+  - PayPal integration
+  - Wise integration
+- [ ] **API للتطبيقات الخارجية**
+  - REST API
+  - WebSocket للتحديثات الفورية
+  - Documentation
+
+### المرحلة 6️⃣: **الحوكمة والمجتمع**
+- [ ] **نظام الحوكمة المجتمعية (Community Governance)**
+  - التصويت على القرارات
+  - اقتراح المشاريع الجديدة
+  - إدارة الميزانية
+- [ ] **برنامج المكافآت (Rewards Program)**
+  - حوافز للمستخدمين النشطين
+
+### المرحلة 7️⃣: **الجسور متعددة السلاسل**
+- [ ] **Bridge to Multiple Chains**
+  - نقل الرموز بين Ethereum و Polygon
+  - نقل الرموز بين Ethereum و BSC
+  - نقل الرموز بين Polygon و BSC
+
+### المرحلة 8️⃣: **الميزات المتقدمة**
+- [ ] **عقود ذكية متقدمة**
+  - Staking
+  - Farming
+  - DAO governance
+- [ ] **أدوات Analytics**
+  - لوحات معلومات للإحصائيات
+  - تتبع حركة الرموز
+  - تقارير مفصلة
+
+---
+
+## 📊 حالة النشر الحالية (Deployment Status)
+
+| الشبكة | الحالة | العنوان | الرابط |
+|--------|--------|--------|--------|
+| **Sepolia Testnet** | ⏳ قريباً | - | - |
+| **Ethereum Mainnet** | ⏳ قريباً | - | - |
+| **Polygon** | ⏳ مخطط | - | - |
+| **BSC** | ⏳ مخطط | - | - |
 
 ---
 
@@ -272,7 +433,7 @@ console.log('Total Supply:', ethers.formatEther(totalSupply), 'MBA');
 
 ---
 
-## �� Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -304,19 +465,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with [Hardhat](https://hardhat.org/)
 - Follows [OpenZeppelin](https://openzeppelin.com/) standards
 - Inspired by the need for efficient cross-border payments in Africa
-
----
-
-## 📈 Roadmap
-
-- [ ] Deploy on Ethereum Mainnet
-- [ ] Deploy on Polygon
-- [ ] Launch on Binance Smart Chain
-- [ ] Develop mobile wallet
-- [ ] Create web dashboard
-- [ ] Integration with payment gateways
-- [ ] Community governance
-- [ ] Bridge to multiple chains
 
 ---
 
