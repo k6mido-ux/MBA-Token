@@ -30,7 +30,9 @@ module.exports = {
     }
   },
   paths: {
-    sources: "./contracts",
+    // The Solidity source file is located at the repository root (MBA.sol),
+    // not in a ./contracts folder, so Hardhat must compile from the root.
+    sources: "./",
     tests: "./test",
     cache: "./cache",
     artifacts: "./artifacts"
