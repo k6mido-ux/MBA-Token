@@ -268,9 +268,9 @@
         <div class="info-box">
             <h3>📱 How to Use</h3>
             <p>1. Install MetaMask browser extension<br>
-               2. Switch to the appropriate network<br>
-               3. Enter recipient address and amount<br>
-               4. Click Transfer to send MBA tokens</p>
+                2. Switch to the appropriate network<br>
+                3. Enter recipient address and amount<br>
+                4. Click Transfer to send MBA tokens</p>
         </div>
 
         <div class="footer">
@@ -310,12 +310,10 @@
                 userAddress = accounts[0];
                 signer = provider.getSigner();
 
-                // Update UI
                 document.getElementById("networkStatus").textContent = NETWORK_NAME;
                 document.getElementById("networkStatus").classList.remove("disconnected");
                 document.getElementById("accountInfo").textContent = `Connected: ${userAddress}`;
 
-                // Load contract
                 if (CONTRACT_ADDRESS !== "0x..." && CONTRACT_ABI.length > 0) {
                     contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
                     await refreshBalance();
@@ -339,9 +337,9 @@
                 const balance = await contract.balanceOf(userAddress);
                 const totalSupply = await contract.totalSupply();
 
-                document.getElementById("userBalance").textContent = 
+                document.getElementById("userBalance").textContent =
                     ethers.utils.formatEther(balance) + " MBA";
-                document.getElementById("totalSupply").textContent = 
+                document.getElementById("totalSupply").textContent =
                     ethers.utils.formatEther(totalSupply) + " MBA";
 
                 showStatus("Balance updated!", "success");
@@ -352,6 +350,11 @@
 
         async function transfer() {
             try {
+                if (!contract) {
+                    showStatus("Contract is not configured. Update the contract address and ABI first.", "error");
+                    return;
+                }
+
                 const recipient = document.getElementById("recipientAddress").value;
                 const amount = document.getElementById("amount").value;
 
@@ -370,7 +373,7 @@
                 showStatus("Waiting for confirmation...", "loading");
                 await tx.wait();
 
-                showStatus(`Successfully transferred ${amount} MBA!", "success");
+                showStatus(`Successfully transferred ${amount} MBA!`, "success");
                 document.getElementById("recipientAddress").value = "";
                 document.getElementById("amount").value = "";
 
@@ -386,7 +389,6 @@
             statusDiv.textContent = message;
         }
 
-        // Initialize on page load
         window.addEventListener("load", initWeb3);
     </script>
 </body>
