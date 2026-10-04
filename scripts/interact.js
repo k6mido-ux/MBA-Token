@@ -4,22 +4,18 @@ async function main() {
   console.log("\n🎯 MBA Token Interaction Script\n");
 
   try {
-    // Get deployment info
     const deployment = getDeploymentInfo();
     console.log("📋 Deployment Info:");
     console.log(`   Address: ${deployment.contractAddress}`);
     console.log(`   Network: ${deployment.network}`);
     console.log(`   Owner: ${deployment.owner}\n`);
 
-    // Get total supply
     const totalSupply = await getTotalSupply();
     console.log(`📊 Total Supply: ${totalSupply} MBA\n`);
 
-    // Get owner balance
     const ownerBalance = await getBalance(deployment.owner);
     console.log(`💰 Owner Balance: ${ownerBalance} MBA\n`);
 
-    // Example: Get contract instance
     const contract = await getContractInstance();
     console.log("✅ Contract instance loaded successfully!");
     console.log("\n📚 Available functions:");

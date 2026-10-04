@@ -5,7 +5,13 @@ const path = require("path");
 // Helper function to read deployment info
 function getDeploymentInfo() {
   const deploymentDir = path.join(__dirname, "../deployments");
-  const files = fs.readdirSync(deploymentDir).filter(f => f.endsWith("-deployment.json"));
+  if (!fs.existsSync(deploymentDir)) {
+    throw new Error("Deployments directory not found. Please deploy the contract first.");
+  }
+
+  const files = fs.readdirSync(deploymentDir)
+    .filter(f => f.endsWith("-deployment.json"))
+    .sort();
   
   if (files.length === 0) {
     throw new Error("No deployment found. Please deploy the contract first.");
@@ -21,13 +27,12 @@ async function getContractInstance() {
   const deployment = getDeploymentInfo();
   const contractAddress = deployment.contractAddress;
   
-  const abi = JSON.parse(
-    fs.readFileSync(
-      path.join(__dirname, "../deployments/MBAToken-ABI.json"),
-      "utf8"
-    )
-  );
+  const abiPath = path.join(__dirname, "../deployments/MBAToken-ABI.json");
+  if (!fs.existsSync(abiPath)) {
+    throw new Error("ABI not found. Please deploy the contract with deploy-full.js first.");
+  }
   
+  const abi = JSON.parse(fs.readFileSync(abiPath, "utf8"));
   const [signer] = await hre.ethers.getSigners();
   return new hre.ethers.Contract(contractAddress, abi, signer);
 }

@@ -3,10 +3,7 @@ const hre = require("hardhat");
 async function main() {
   console.log("Deploying MBA Token...");
 
-  // Get the contract factory
   const MBAToken = await hre.ethers.getContractFactory("MBAToken");
-
-  // Deploy with initial supply of 1 million tokens
   const initialSupply = 1000000;
   console.log(`Deploying with initial supply: ${initialSupply} MBA tokens`);
 
@@ -17,7 +14,6 @@ async function main() {
   console.log("✅ MBA Token deployed successfully!");
   console.log(`📍 Contract Address: ${tokenAddress}`);
 
-  // Log important contract details
   const totalSupply = await mbaToken.totalSupply();
   const owner = await mbaToken.owner();
   const name = await mbaToken.name();
